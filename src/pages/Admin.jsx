@@ -317,30 +317,31 @@ function Admin() {
                 "20px",
             }}
           >
-            {documents.map(
-              (
-                doc,
-                index
-              ) => (
-                <div
-                  key={
-                    index
-                  }
-                  style={{
-                    background:
-                      "#f8fafc",
-                    padding:
-                      "15px",
-                    borderRadius:
-                      "12px",
-                    border:
-                      "1px solid #e2e8f0",
-                  }}
-                >
-                  📄 {doc}
-                </div>
-              )
-            )}
+            {documents.map((doc) => (
+  <div
+    key={doc.id}
+    style={{
+      background: "#f8fafc",
+      padding: "15px",
+      borderRadius: "12px",
+      border: "1px solid #e2e8f0",
+    }}
+  >
+    <h4>{doc.filename}</h4>
+
+    <p>
+      <strong>Path:</strong>{" "}
+      {doc.file_path}
+    </p>
+
+    <p>
+      <strong>Uploaded:</strong>{" "}
+      {new Date(
+        doc.upload_date
+      ).toLocaleString()}
+    </p>
+  </div>
+))}
           </div>
         )}
       </div>

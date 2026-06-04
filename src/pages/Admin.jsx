@@ -35,18 +35,26 @@ function Admin() {
   };
 
   const handleUpload = async () => {
+
     if (!file) {
-      alert(
-        "Please select a PDF file"
-      );
+
+      alert("Please select a PDF file");
+
       return;
     }
 
     try {
+
+      console.log("UPLOAD STARTED");
+      console.log(file);
+
       setLoading(true);
 
       const data =
         await uploadPdf(file);
+
+      console.log("SUCCESS");
+      console.log(data);
 
       setResult(data);
 
@@ -55,17 +63,22 @@ function Admin() {
       setFile(null);
 
     } catch (error) {
+
+      console.log("UPLOAD ERROR");
+
       console.log(error);
 
-      alert(
-        "Upload failed"
-      );
+      console.log(error.response);
+
+      console.log(error.response?.data);
+
+      alert("Upload failed");
 
     } finally {
+
       setLoading(false);
     }
   };
-
   return (
     <div
       style={{
